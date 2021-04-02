@@ -1,0 +1,33 @@
+{
+  "expo": {
+    "name": "Guarden",
+    "slug": "Guarden",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/guardenPng.png",
+    "facebookScheme" : "fb246006493900229",
+    "splash": {
+      "image": "./assets/guardenPng.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/guardenPng.png",
+        "backgroundColor": "#FFFFFF"
+      }
+    },
+    "web": {
+      "favicon": "./assets/guardenPng.png"
+    }
+  }
+}
