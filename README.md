@@ -1,1 +1,0 @@
-# GuardenClint-ReactNative
