@@ -8,6 +8,7 @@ import {
   StatusBar,
   ActivityIndicator,
   ImageBackground,
+  
 } from "react-native";
 
 import * as Animatable from "react-native-animatable";

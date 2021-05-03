@@ -2,8 +2,8 @@ import React from "react";
 import GardenDataProvider from "../Utils/UserGardenDataContext";
 
 import main from "../Pages/Main/main";
-import forum from "../Pages/Main/forum";
 import settings from "../Pages/Main/settings";
+import ForumStack from "../Utils/ForumStack";
 
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
@@ -44,7 +44,7 @@ export default function mainStack() {
         />
         <Tab.Screen
           name="forum"
-          component={forum}
+          component={ForumStack}
           options={{
             tabBarLabel: "Forum",
             tabBarIcon: ({ color, size }) => (

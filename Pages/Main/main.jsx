@@ -58,7 +58,7 @@ export default function main({ navigation }) {
           />
         );
       case 7:
-        return <EditPlantScreen plant={plantPreesed}/>;
+        return <EditPlantScreen plant={plantPreesed} />;
       default:
         break;
     }

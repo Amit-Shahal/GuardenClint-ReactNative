@@ -31,29 +31,10 @@ export default function AddNewAreaScreen(props) {
             <Text style={{ color: "#009387", fontSize: 20 }}>Cancel</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity
-            style={{
-              height: "100%",
-              width: "45%",
-              borderWidth: 1,
-              borderTopWidth: 0,
-              borderColor: "#009387",
-              backgroundColor: "#EDEDE6",
-
-              alignItems: "center",
-              justifyContent: "flex-start",
-              borderBottomLeftRadius: 30,
-              borderBottomRightRadius: 30,
-            }}
-          >
+          <TouchableOpacity style={styles.touchableOpacity}>
             <Image
               source={require("../../../assets/vase.jpg")}
-              style={{
-                width: "100%",
-                height: "85%",
-                borderBottomLeftRadius: 30,
-                borderBottomRightRadius: 30,
-              }}
+              style={styles.img}
               resizeMode="center"
             />
             <View
@@ -90,5 +71,24 @@ const styles = StyleSheet.create({
     backgroundColor: "#FFFFFF",
     borderTopLeftRadius: 30,
     borderTopRightRadius: 30,
+  },
+  touchableOpacity: {
+    height: "100%",
+    width: "45%",
+    borderWidth: 1,
+    borderTopWidth: 0,
+    borderColor: "#009387",
+    backgroundColor: "#EDEDE6",
+
+    alignItems: "center",
+    justifyContent: "flex-start",
+    borderBottomLeftRadius: 30,
+    borderBottomRightRadius: 30,
+  },
+  img: {
+    width: "100%",
+    height: "85%",
+    borderBottomLeftRadius: 30,
+    borderBottomRightRadius: 30,
   },
 });

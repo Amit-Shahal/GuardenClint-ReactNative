@@ -13,7 +13,6 @@ import ResetPassword from "./Pages/Login/ResetPassword";
 
 const Stack = createStackNavigator();
 
-
 export default function App() {
   return (
     <LoginProvider>

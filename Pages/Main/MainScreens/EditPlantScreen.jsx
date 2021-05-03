@@ -1,47 +1,36 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   View,
   Text,
   StyleSheet,
   TextInput,
-  TouchableOpacity,
+
 } from "react-native";
 import * as Animatable from "react-native-animatable";
-import { Avatar } from "react-native-elements";
+import UploadImage from "../../Components/UploadImage";
 
 export default function AreaScreen(props) {
-  let newName;
+  let newName = "";
+
   return (
     <Animatable.View style={styles.footer} animation="bounceInUp">
       <View style={styles.footerContent}>
         <View style={styles.container}>
-          <View style={styles.btnsContainer}>
-            <TouchableOpacity
-              style={styles.touchableOpacity}
-              //   onPress={() => props.setCase(6)}
-            >
-              <Text style={styles.textSign}>Take New Photo</Text>
-              {/* <EntypoIcon name="archive" color={"white"} size={20}></EntypoIcon> */}
-            </TouchableOpacity>
-            <TouchableOpacity
-              //   onPress={() => props.setCase(7)}
-              style={styles.touchableOpacity}
-            >
-              <Text style={styles.textSign}>Upload From Gallery</Text>
-              {/* <EntypoIcon name="edit" color={"white"} size={20}></EntypoIcon> */}
-            </TouchableOpacity>
+          <UploadImage />
+        </View>
+        <View style={styles.footerContent}>
+          <View style={styles.textInputContainer}>
+            <Text style={styles.inputTextTitle}>Name: </Text>
+            <TextInput
+              placeholder={props.plant.Plant_Name}
+              // value={props.plant.Plant_Name}
+              leftIcon={{ type: "Entypo", name: "email" }}
+              onChangeText={(value) => (newName = value)}
+              style={styles.textInput}
+            />
           </View>
         </View>
-        <View style={styles.textInputContainer}>
-          <Text style={styles.inputTextTitle}>Name: </Text>
-          <TextInput
-            placeholder={props.plant.Plant_Name}
-            // value={props.plant.Plant_Name}
-            leftIcon={{ type: "Entypo", name: "email" }}
-            onChangeText={(value) => (newName = value)}
-            style={styles.textInput}
-          />
-        </View>
+        <View style={styles.footerContent}></View>
       </View>
     </Animatable.View>
   );
@@ -55,8 +44,8 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 30,
   },
   container: {
+    flex: 1,
     flexDirection: "row",
-    marginTop: 20,
   },
   btnsContainer: {
     width: "80%",
