@@ -256,6 +256,9 @@ export default function Login({ navigation }) {
                 <Text style={styles.textSign}>New? Register Now</Text>
               </TouchableOpacity>
             </View>
+            <Text style={{ opacity: 0.15 }}>To see dummy user example:</Text>
+            <Text style={{ opacity: 0.15 }}>email - amit164973@gmail.com</Text>
+            <Text style={{ opacity: 0.15 }}>password - admin</Text>
           </Animatable.View>
         )}
       </ImageBackground>

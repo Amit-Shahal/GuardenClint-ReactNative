@@ -7,6 +7,7 @@ import {
   StatusBar,
   ImageBackground,
 } from "react-native";
+import { TouchableOpacity } from "react-native-gesture-handler";
 import CardBody from "./ForumComponents/CardBody";
 import CardFooter from "./ForumComponents/CardFooter";
 import CardHeader from "./ForumComponents/CardHeader";
@@ -38,7 +39,7 @@ export default function Forum() {
       );
   };
   const scrollY = useRef(new Animated.Value(0)).current;
-  const cardHight = 220;
+  const cardHight = 200;
   return (
     <View style={styles.container}>
       <ImageBackground
@@ -90,19 +91,17 @@ export default function Forum() {
                   },
                 ]}
               >
-                <CardHeader
-                  image={item.ProfileImg}
-                  Name={item.Name}
-                  style={styles.cardHeader}
-                />
-                <CardBody
-                  image={item.Question_Photo}
-                  text={item.Question_Content}
-                />
-                <CardFooter
-                  votes={item.Question_Votes}
-                  comments={item.answers.length}
-                />
+                <CardHeader image={item.ProfileImg} Name={item.Name} />
+                <TouchableOpacity>
+                  <CardBody
+                    image={item.Question_Photo}
+                    text={item.Question_Content}
+                  />
+                  <CardFooter
+                    votes={item.Question_Votes}
+                    comments={item.answers.length}
+                  />
+                </TouchableOpacity>
               </Animated.View>
             );
           }}
@@ -130,7 +129,6 @@ const styles = StyleSheet.create({
     shadowRadius: 20,
     padding: 10,
   },
-  cardHeader: {},
   imageBG: {
     flex: 1,
   },
