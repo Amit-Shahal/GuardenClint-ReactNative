@@ -39,7 +39,7 @@ export default function Forum() {
       );
   };
   const scrollY = useRef(new Animated.Value(0)).current;
-  const cardHight = 200;
+  const cardHight = 190;
   return (
     <View style={styles.container}>
       <ImageBackground
