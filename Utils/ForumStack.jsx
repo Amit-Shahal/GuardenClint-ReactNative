@@ -15,20 +15,36 @@ export default function ForumStack() {
       <Stack.Screen
         name="ForumDetails"
         component={ForumDetails}
-        // options={() => ({
-        //   gestureEnabled: false,
-        //   transitionSpec: {
-        //     open: { animation: "timing", config: { duration: 1000 } },
-        //     close: { animation: "timing", config: { duration: 1000 } },
-        //   },
-        //   cardStyleInterpolator: ({ current: { progress } }) => {
-        //     return {
-        //       cardStyle: {
-        //         opacity: progress,
-        //       },
-        //     };
-        //   },
-        // })}
+        options={() => ({
+          gestureEnabled: false,
+          transitionSpec: {
+            open: { animation: "timing", config: { duration: 500 } },
+            close: { animation: "timing", config: { duration: 500 } },
+          },
+          cardStyleInterpolator: ({ current: { progress } }) => {
+            return {
+              cardStyle: {
+                opacity: progress,
+              },
+            };
+          },
+        })}
+        sharedElementsConfig={(route, otherRoute, showing) => {
+          const { item } = route.params;
+          return [
+            // {
+            //   id: `item.${item.Question_ID}.view`,
+            //   animation: "move",
+            //   // resize: "stretch",
+            // },
+            // {
+            //   id: `item.${item.Question_ID}.txt`,
+            // },
+            {
+              id: `item.${item.Question_ID}.img`,
+            },
+          ];
+        }}
       />
     </Stack.Navigator>
   );

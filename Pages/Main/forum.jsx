@@ -2,17 +2,21 @@ import React, { useEffect, useState, useRef } from "react";
 import {
   View,
   StyleSheet,
-  FlatList,
+  Text,
   Animated,
   StatusBar,
   ImageBackground,
+  Image,
+  Dimensions,
 } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import { SharedElement } from "react-navigation-shared-element";
 import CardBody from "./ForumComponents/CardBody";
 import CardFooter from "./ForumComponents/CardFooter";
 import CardHeader from "./ForumComponents/CardHeader";
+const windowWidth = Dimensions.get("window").width;
 
-export default function Forum() {
+export default function Forum({ navigation }) {
   const [Data, setData] = useState();
   useEffect(() => {
     getData();
@@ -38,6 +42,25 @@ export default function Forum() {
         }
       );
   };
+
+  const getPhoto = (item) => {
+    if (item.Question_Photo !== null) {
+      return (
+        <SharedElement
+          id={`item.${item.Question_ID}.img`}
+          style={styles.imgView}
+        >
+          <Image
+            source={{
+              uri: item.Question_Photo,
+            }}
+            style={styles.img}
+          />
+        </SharedElement>
+      );
+    }
+  };
+
   const scrollY = useRef(new Animated.Value(0)).current;
   const cardHight = 190;
   return (
@@ -92,16 +115,29 @@ export default function Forum() {
                 ]}
               >
                 <CardHeader image={item.ProfileImg} Name={item.Name} />
-                <TouchableOpacity>
-                  <CardBody
-                    image={item.Question_Photo}
-                    text={item.Question_Content}
-                  />
-                  <CardFooter
-                    votes={item.Question_Votes}
-                    comments={item.answers.length}
-                  />
+                <TouchableOpacity
+                  onPress={() => navigation.navigate("ForumDetails", { item })}
+                >
+                  <View style={styles.bodyContainer}>
+                    <View style={styles.txtView}>
+                      <SharedElement id={`item.${item.Question_ID}.txt`}>
+                        <Text
+                          style={styles.txt}
+                          numberOfLines={3}
+                          adjustsFontSizeToFit
+                        >
+                          {item.Question_Content}
+                        </Text>
+                      </SharedElement>
+                    </View>
+                    {getPhoto(item)}
+                  </View>
                 </TouchableOpacity>
+
+                <CardFooter
+                  votes={item.Question_Votes}
+                  comments={item.answers.length}
+                />
               </Animated.View>
             );
           }}
@@ -131,5 +167,35 @@ const styles = StyleSheet.create({
   },
   imageBG: {
     flex: 1,
+  },
+  bodyContainer: {
+    height: 100,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  txt: {
+    fontSize: 24,
+    fontWeight: "600",
+    position: "absolute",
+  },
+  txtView: {
+    flex: 3,
+    height: 95,
+    marginTop: 5,
+    alignItems: "flex-start",
+    justifyContent: "flex-start",
+  },
+  imgView: {
+    flex: 2,
+    height: 100,
+    position: "relative",
+  },
+  img: {
+    flex: 1,
+    borderRadius: 20,
+    position: "absolute",
+    height: 100,
+    width: ((windowWidth - 40) / 5) * 2,
   },
 });

@@ -1,27 +1,33 @@
 import React from "react";
 import { View, Text, StyleSheet, Image } from "react-native";
+import { SharedElement } from "react-navigation-shared-element";
 
 export default function CardBody(props) {
-  const { image, text } = props;
+  const { image, text, Question_ID } = props;
   return (
     <View style={styles.container}>
       <View style={styles.txtView}>
-        <Text style={styles.txt}>{text}</Text>
+        <SharedElement id={`item.${Question_ID}.txt`}>
+          <Text style={styles.txt} numberOfLines={3} adjustsFontSizeToFit>
+            {text}
+          </Text>
+        </SharedElement>
       </View>
-      {image !== null && (
-        <Image
-          source={{
-            uri: image,
-          }}
-          style={styles.img}
-        />
-      )}
+      {/* <SharedElement id={`item.${Question_ID}.img`} style={styles.imgView}> */}
+      <Image
+        source={{
+          uri: image,
+        }}
+        // style={{ flex: 1, borderRadius: 20 }}
+        style={styles.imgView}
+      />
+      {/* </SharedElement> */}
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
+  bodyContainer: {
     height: 100,
     flexDirection: "row",
     alignItems: "center",
@@ -38,9 +44,8 @@ const styles = StyleSheet.create({
     alignItems: "flex-start",
     justifyContent: "flex-start",
   },
-  img: {
+  imgView: {
     flex: 2,
     height: 100,
-    borderRadius: 20,
   },
 });

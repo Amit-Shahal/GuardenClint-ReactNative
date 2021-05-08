@@ -2,7 +2,6 @@ import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 
 import SimpleLineIcons from "react-native-vector-icons/SimpleLineIcons";
-import Octicons from "react-native-vector-icons/Octicons";
 
 export default function CardFooter(props) {
   const { votes, comments } = props;
@@ -29,7 +28,7 @@ export default function CardFooter(props) {
           />
         </TouchableOpacity>
       </View>
-      <View style={styles.smallView}>
+      <TouchableOpacity style={styles.smallView}>
         <SimpleLineIcons
           name="bubbles"
           color="#000000"
@@ -37,8 +36,10 @@ export default function CardFooter(props) {
           style={{ marginRight: 3 }}
         />
         <Text style={styles.txt}>{comments}</Text>
-      </View>
-      <SimpleLineIcons name="share-alt" color="#000000" size={20} />
+      </TouchableOpacity>
+      <TouchableOpacity>
+        <SimpleLineIcons name="share-alt" color="#000000" size={20} />
+      </TouchableOpacity>
     </View>
   );
 }
