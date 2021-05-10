@@ -9,6 +9,8 @@ enableScreens();
 const Stack = createSharedElementStackNavigator();
 
 export default function ForumStack() {
+  const config = { animation: "timing", config: { duration: 500 } };
+
   return (
     <Stack.Navigator headerMode="none">
       <Stack.Screen name="Forum" component={Forum} />
@@ -18,8 +20,8 @@ export default function ForumStack() {
         options={() => ({
           gestureEnabled: false,
           transitionSpec: {
-            open: { animation: "timing", config: { duration: 500 } },
-            close: { animation: "timing", config: { duration: 500 } },
+            open: config,
+            close: config,
           },
           cardStyleInterpolator: ({ current: { progress } }) => {
             return {
@@ -32,16 +34,12 @@ export default function ForumStack() {
         sharedElementsConfig={(route, otherRoute, showing) => {
           const { item } = route.params;
           return [
-            // {
-            //   id: `item.${item.Question_ID}.view`,
-            //   animation: "move",
-            //   // resize: "stretch",
-            // },
-            // {
-            //   id: `item.${item.Question_ID}.txt`,
-            // },
             {
               id: `item.${item.Question_ID}.img`,
+            },
+            {
+              id: `item.${item.Question_ID}.txt`,
+              resize: "clip",
             },
           ];
         }}

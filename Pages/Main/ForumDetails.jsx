@@ -39,6 +39,7 @@ export default function ForumDetails({ route, navigation }) {
   return (
     <View style={styles.container}>
       <View style={[styles.card]}>
+        {/* CARD HEADER */}
         <View style={styles.cardHeader}>
           <TouchableOpacity onPress={() => navigation.goBack()}>
             <SimpleLineIcons
@@ -53,11 +54,14 @@ export default function ForumDetails({ route, navigation }) {
 
         {/* CARD BODY */}
         <View style={styles.CardBody}>
-          <SharedElement id={`item.${item.Question_ID}.txt`}>
-            <Text style={styles.txt} numberOfLines={3} adjustsFontSizeToFit>
-              {item.Question_Content}
-            </Text>
-          </SharedElement>
+          <View style={styles.txtView}>
+            <SharedElement id={`item.${item.Question_ID}.txt`}>
+              <Text style={styles.txt} numberOfLines={1} adjustsFontSizeToFit>
+                {item.Question_Content}
+              </Text>
+            </SharedElement>
+          </View>
+
           {getPhoto()}
         </View>
         <CardFooter
@@ -97,16 +101,21 @@ const styles = StyleSheet.create({
   CardBody: {
     flex: 1,
   },
+  txtView: {
+    height: 40,
+    position: "relative",
+  },
   txt: {
     fontSize: 34,
     fontWeight: "600",
-    // position: "absolute",
+    position: "absolute",
   },
   bodyContainer: {
     flex: 1,
   },
 
   imgView: {
+    // height: item.Question_Photo !== null ? (windowWidth * 9) / 16 : 0,
     height: (windowWidth * 9) / 16,
     justifyContent: "center",
     alignItems: "center",
