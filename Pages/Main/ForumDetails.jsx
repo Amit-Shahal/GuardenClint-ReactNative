@@ -57,7 +57,7 @@ export default function ForumDetails({ route, navigation }) {
           <View style={styles.txtView}>
             <SharedElement id={`item.${item.Question_ID}.txt`}>
               <Text style={styles.txt} numberOfLines={1} adjustsFontSizeToFit>
-                {item.Question_Content}
+                {item.Question_Content}zdcxcxzcxz 
               </Text>
             </SharedElement>
           </View>
