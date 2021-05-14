@@ -35,7 +35,6 @@ export default function Forum({ navigation }) {
       .then(
         (result) => {
           setData(result);
-          // console.log(result);
         },
         (error) => {
           console.log("err post=", error);
@@ -133,7 +132,6 @@ export default function Forum({ navigation }) {
                     {getPhoto(item)}
                   </View>
                 </TouchableOpacity>
-
                 <CardFooter
                   votes={item.Question_Votes}
                   comments={item.answers.length}
@@ -173,6 +171,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
+    position: "relative",
   },
   txt: {
     fontSize: 24,
@@ -190,13 +189,13 @@ const styles = StyleSheet.create({
   imgView: {
     flex: 2,
     height: 100,
-    position: "relative",
+    position: "absolute",
+    width: ((windowWidth - 40) / 5) * 2,
+    right: "-1%",
   },
   img: {
     flex: 1,
+    resizeMode: "cover",
     borderRadius: 20,
-    position: "absolute",
-    height: 100,
-    width: ((windowWidth - 40) / 5) * 2,
   },
 });
