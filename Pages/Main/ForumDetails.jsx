@@ -26,10 +26,7 @@ export default function ForumDetails({ route, navigation }) {
       return (
         <SharedElement
           id={`item.${item.Question_ID}.img`}
-          style={[
-            styles.imgView,
-            { height: isThereAPhoto ? ((windowWidth - 20) * 9) / 16 : 0 },
-          ]}
+          style={[styles.imgView]}
         >
           <Image
             source={{
@@ -66,7 +63,6 @@ export default function ForumDetails({ route, navigation }) {
               </Text>
             </SharedElement>
           </View>
-
           {getPhoto(item.Question_Photo)}
         </View>
         <CardFooter
@@ -124,13 +120,18 @@ export default function ForumDetails({ route, navigation }) {
                   <View style={styles.txtViewAns}>
                     <Text
                       style={styles.txtAns}
-                      numberOfLines={3}
+                      numberOfLines={4}
                       adjustsFontSizeToFit
                     >
                       {item.Answer_Content}
                     </Text>
                   </View>
-                  {/* {getPhoto(item.Answer_Photo)} */}
+                  <Image
+                    source={{
+                      uri: item.Answer_Photo,
+                    }}
+                    style={styles.imgAns}
+                  />
                 </View>
                 <CardFooter
                   votes={item.Answer_Votes}
@@ -177,24 +178,22 @@ const styles = StyleSheet.create({
   CardBody: {
     flex: 1,
     position: "relative",
-    alignItems: "center",
-    justifyContent: "flex-start",
+    alignItems: "flex-start",
   },
   txtView: {
     height: 40,
+    width: windowWidth - 40,
   },
   txt: {
     fontSize: 34,
     fontWeight: "600",
     position: "absolute",
   },
-  bodyContainer: {
-    flex: 1,
-  },
 
   imgView: {
-    width: windowWidth - 20,
-    height: ((windowWidth - 20) * 9) / 16,
+    marginTop: 40,
+    width: windowWidth - 40,
+    height: ((windowWidth - 40) * 9) / 16,
     position: "absolute",
   },
   img: {
@@ -238,5 +237,10 @@ const styles = StyleSheet.create({
     alignItems: "flex-start",
     justifyContent: "flex-start",
     position: "relative",
+  },
+  imgAns: {
+    flex: 2,
+    height: 100,
+    borderRadius: 20,
   },
 });

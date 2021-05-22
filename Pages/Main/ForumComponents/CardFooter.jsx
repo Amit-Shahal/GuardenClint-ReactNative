@@ -1,11 +1,30 @@
 import React from "react";
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity, Share } from "react-native";
 
 import SimpleLineIcons from "react-native-vector-icons/SimpleLineIcons";
 
 export default function CardFooter(props) {
   const { votes, comments } = props;
-
+  const onShare = async () => {
+    try {
+      const result = await Share.share({
+        message:
+          "Hey, Check out this tip on Guarden app",
+        url: "https://reactnative.dev/docs/share",
+      });
+      if (result.action === Share.sharedAction) {
+        if (result.activityType) {
+          // shared with activity type of result.activityType
+        } else {
+          // shared
+        }
+      } else if (result.action === Share.dismissedAction) {
+        // dismissed
+      }
+    } catch (error) {
+      alert(error.message);
+    }
+  };
   return (
     <View style={styles.container}>
       <View style={styles.smallView}>
@@ -37,7 +56,7 @@ export default function CardFooter(props) {
         />
         <Text style={styles.txt}>{comments}</Text>
       </TouchableOpacity>
-      <TouchableOpacity>
+      <TouchableOpacity onPress={onShare}>
         <SimpleLineIcons name="share-alt" color="#000000" size={20} />
       </TouchableOpacity>
     </View>
