@@ -10,7 +10,7 @@ A gardening app made for the beginner gardener, using reat native.
 - clone the repository
 - `npm/yarn install` at main directory
 - `expo start`
-- log in to as example user:  
+- log in as example user:  
   - user name: amit164973@gmail.com
   - user password: admin
 - call me for a job interview 😎 
