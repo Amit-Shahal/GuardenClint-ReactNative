@@ -113,7 +113,11 @@ export default function Forum({ navigation }) {
                   },
                 ]}
               >
-                <CardHeader image={item.ProfileImg} Name={item.Name} />
+                <CardHeader
+                  image={item.ProfileImg}
+                  Name={item.Name}
+                  Time={item.Time}
+                />
                 <TouchableOpacity
                   onPress={() => navigation.navigate("ForumDetails", { item })}
                 >

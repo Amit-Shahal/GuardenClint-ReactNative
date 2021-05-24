@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import {
   View,
   Text,
@@ -21,6 +21,7 @@ export default function ForumDetails({ route, navigation }) {
   const isThereAPhoto = item.Question_Photo !== null;
   const scrollY = useRef(new Animated.Value(0)).current;
   const cardHight = 190;
+  item.answers.sort((a, b) => (a.Time > b.Time ? 1 : -1));
   const getPhoto = (imgUri) => {
     if (item.Question_Photo !== null) {
       return (
@@ -51,7 +52,11 @@ export default function ForumDetails({ route, navigation }) {
               style={{ marginRight: 3 }}
             />
           </TouchableOpacity>
-          <CardHeader image={item.ProfileImg} Name={item.Name} />
+          <CardHeader
+            image={item.ProfileImg}
+            Name={item.Name}
+            Time={item.Time}
+          />
         </View>
 
         {/* CARD BODY */}
@@ -114,8 +119,11 @@ export default function ForumDetails({ route, navigation }) {
                   },
                 ]}
               >
-                <CardHeader image={item.ProfileImg} Name={item.Name} />
-
+                <CardHeader
+                  image={item.ProfileImg}
+                  Name={item.Name}
+                  Time={item.Time}
+                />
                 <View style={styles.bodyContainer}>
                   <View style={styles.txtViewAns}>
                     <Text

@@ -2,8 +2,14 @@ import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { Avatar } from "react-native-elements";
 
+import calculatPostDateAndTypeFunc from "../../../Utils/calculatPostDateAndTypeFunc";
+
 export default function CardHeader(props) {
-  const { image, Name } = props;
+  const { image, Name, Time } = props;
+  var now = new Date();
+  var dateOfPost = new Date(Time);
+  let daysAgo = now.getTime() - dateOfPost.getTime();
+  let time = calculatPostDateAndTypeFunc(daysAgo);
   return (
     <View style={styles.container}>
       <Avatar
@@ -17,7 +23,12 @@ export default function CardHeader(props) {
           shadowColor: "#000000",
         }}
       />
-      <Text style={styles.txt}>{Name}</Text>
+      <View style={styles.textView}>
+        <Text style={styles.txt}>{Name}</Text>
+        <Text style={styles.txtTime}>
+          {time.time} {time.type} ago
+        </Text>
+      </View>
     </View>
   );
 }
@@ -33,5 +44,14 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: "400",
     marginLeft: 10,
+  },
+  textView: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    flex: 1,
+  },
+  txtTime: {
+    fontWeight: "400",
   },
 });
