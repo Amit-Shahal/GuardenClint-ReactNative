@@ -11,7 +11,6 @@ export default function calculatPostDateAndTypeFunc(time) {
     : time < 31556952
     ? ((type = "months"), (time /= 60 * 60 * 24 * 30))
     : ((type = "years"), (time /= 60 * 60 * 24 * 30 * 12));
-
   time = Math.floor(time);
   return { type, time };
 }
