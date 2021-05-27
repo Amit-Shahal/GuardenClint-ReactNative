@@ -2,14 +2,12 @@ import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity, Share } from "react-native";
 
 import SimpleLineIcons from "react-native-vector-icons/SimpleLineIcons";
-
 export default function CardFooter(props) {
-  const { votes, comments } = props;
+  const { votes, comments, navigation, item } = props;
   const onShare = async () => {
     try {
       const result = await Share.share({
-        message:
-          "Hey, Check out this tip on Guarden app",
+        message: "Hey, Check out this tip on Guarden app",
         url: "https://reactnative.dev/docs/share",
       });
       if (result.action === Share.sharedAction) {
@@ -25,20 +23,23 @@ export default function CardFooter(props) {
       alert(error.message);
     }
   };
+
+  const addVotes = () => {};
+  const subtractVotes = () => {};
   return (
     <View style={styles.container}>
       <View style={styles.smallView}>
-        <TouchableOpacity>
-          <SimpleLineIcons
-            name="arrow-up-circle"
-            color="#000000"
-            size={20}
-            style={{ marginRight: 3 }}
-          />
-        </TouchableOpacity>
+        {/* <TouchableOpacity onPress={addVotes} > */}
+        <SimpleLineIcons
+          name="arrow-up-circle"
+          color="#000000"
+          size={20}
+          style={{ marginRight: 3 }}
+        />
+        {/* </TouchableOpacity> */}
 
         <Text style={styles.txt}>{votes}</Text>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={subtractVotes}>
           <SimpleLineIcons
             name="arrow-down-circle"
             color="#000000"
@@ -47,7 +48,10 @@ export default function CardFooter(props) {
           />
         </TouchableOpacity>
       </View>
-      <TouchableOpacity style={styles.smallView}>
+      <TouchableOpacity
+        style={styles.smallView}
+        onPress={() => navigation.navigate("ForumDetails", { item })}
+      >
         <SimpleLineIcons
           name="bubbles"
           color="#000000"

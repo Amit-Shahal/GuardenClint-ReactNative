@@ -61,7 +61,7 @@ export default function Forum({ navigation }) {
   };
 
   const scrollY = useRef(new Animated.Value(0)).current;
-  const cardHight = 190;
+  const cardHight = 170;
   return (
     <View style={styles.container}>
       <ImageBackground
@@ -118,27 +118,29 @@ export default function Forum({ navigation }) {
                   Name={item.Name}
                   Time={item.Time}
                 />
-                <TouchableOpacity
+                {/* <TouchableOpacity
                   onPress={() => navigation.navigate("ForumDetails", { item })}
-                >
-                  <View style={styles.bodyContainer}>
-                    <View style={styles.txtView}>
-                      <SharedElement id={`item.${item.Question_ID}.txt`}>
-                        <Text
-                          style={styles.txt}
-                          numberOfLines={3}
-                          adjustsFontSizeToFit
-                        >
-                          {item.Question_Content}
-                        </Text>
-                      </SharedElement>
-                    </View>
-                    {getPhoto(item)}
+                > */}
+                <View style={styles.bodyContainer}>
+                  <View style={styles.txtView}>
+                    <SharedElement id={`item.${item.Question_ID}.txt`}>
+                      <Text
+                        style={styles.txt}
+                        numberOfLines={3}
+                        adjustsFontSizeToFit
+                      >
+                        {item.Question_Content}
+                      </Text>
+                    </SharedElement>
                   </View>
-                </TouchableOpacity>
+                  {getPhoto(item)}
+                </View>
+                {/* </TouchableOpacity> */}
                 <CardFooter
                   votes={item.Question_Votes}
                   comments={item.answers.length}
+                  navigation={navigation}
+                  item={item}
                 />
               </Animated.View>
             );

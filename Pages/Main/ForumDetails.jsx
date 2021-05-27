@@ -16,12 +16,14 @@ import CardHeader from "./ForumComponents/CardHeader";
 import SimpleLineIcons from "react-native-vector-icons/SimpleLineIcons";
 import { SharedElement } from "react-navigation-shared-element";
 const windowWidth = Dimensions.get("window").width;
+
 export default function ForumDetails({ route, navigation }) {
   const { item } = route.params;
   const isThereAPhoto = item.Question_Photo !== null;
   const scrollY = useRef(new Animated.Value(0)).current;
-  const cardHight = 190;
+  const cardHight = 170;
   item.answers.sort((a, b) => (a.Time > b.Time ? 1 : -1));
+
   const getPhoto = (imgUri) => {
     if (item.Question_Photo !== null) {
       return (
@@ -39,6 +41,7 @@ export default function ForumDetails({ route, navigation }) {
       );
     }
   };
+
   return (
     <View style={styles.container}>
       <View style={[styles.cardQ]}>
@@ -116,6 +119,7 @@ export default function ForumDetails({ route, navigation }) {
                   {
                     opacity,
                     transform: [{ scale }],
+                    // margin: 5,
                   },
                 ]}
               >
@@ -128,7 +132,7 @@ export default function ForumDetails({ route, navigation }) {
                   <View style={styles.txtViewAns}>
                     <Text
                       style={styles.txtAns}
-                      numberOfLines={4}
+                      numberOfLines={5}
                       adjustsFontSizeToFit
                     >
                       {item.Answer_Content}
@@ -144,6 +148,8 @@ export default function ForumDetails({ route, navigation }) {
                 <CardFooter
                   votes={item.Answer_Votes}
                   comments={item.Responses.length}
+                  navigation={navigation}
+                  item={item}
                 />
               </Animated.View>
             );
@@ -226,6 +232,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.5,
     shadowRadius: 20,
     padding: 10,
+    marginHorizontal: 10,
   },
   bodyContainer: {
     height: 100,
@@ -237,6 +244,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: "600",
     position: "absolute",
+    height: 95,
   },
   txtViewAns: {
     flex: 3,
