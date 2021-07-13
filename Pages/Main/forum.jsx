@@ -118,9 +118,9 @@ export default function Forum({ navigation }) {
                   Name={item.Name}
                   Time={item.Time}
                 />
-                {/* <TouchableOpacity
+                <TouchableOpacity
                   onPress={() => navigation.navigate("ForumDetails", { item })}
-                > */}
+                >
                 <View style={styles.bodyContainer}>
                   <View style={styles.txtView}>
                     <SharedElement id={`item.${item.Question_ID}.txt`}>
@@ -135,7 +135,7 @@ export default function Forum({ navigation }) {
                   </View>
                   {getPhoto(item)}
                 </View>
-                {/* </TouchableOpacity> */}
+                </TouchableOpacity>
                 <CardFooter
                   votes={item.Question_Votes}
                   comments={item.answers.length}

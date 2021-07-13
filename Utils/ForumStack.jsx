@@ -2,7 +2,7 @@ import React from "react";
 import { enableScreens } from "react-native-screens";
 import { createSharedElementStackNavigator } from "react-navigation-shared-element";
 
-import Forum from "../Pages/Main/Forum";
+import Forum from "../Pages/Main/forum";
 import ForumDetails from "../Pages/Main/ForumDetails.jsx";
 
 enableScreens();
