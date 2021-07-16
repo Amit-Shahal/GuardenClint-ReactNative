@@ -1,6 +1,6 @@
 # Guarden - React Native
 
-this is my final project as a student for Business Administration, specializing in Full-stack development.
+This is my final project as a student for Business Administration, specializing in Full-stack development.
 This proj is a gardening app made for the beginner gardener.
 
 
