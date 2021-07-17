@@ -48,9 +48,9 @@ export default function main({ navigation }) {
       case 3:
         return <PlantScreen plantPreesed={plantPreesed} setCase={setCase} />;
       case 4:
-        return <AddNewPlantScreen />;
+        return <AddNewPlantScreen setCase={setCase}/>;
       case 5:
-        return <AddNewAreaScreen />;
+        return <AddNewAreaScreen setCase={setCase}/>;
       case 6:
         return (
           <PlantArchiveScreen

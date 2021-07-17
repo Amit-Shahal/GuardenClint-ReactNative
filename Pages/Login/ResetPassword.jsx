@@ -76,11 +76,13 @@ export default function ResetPassword({ navigation, route }) {
           <TextInput
             style={styles.textInput}
             placeholder="New Password"
+            autoCapitalize={'none'}
             onChangeText={(value) => (newPassword = value)}
           />
           <TextInput
             style={styles.textInput}
             placeholder="New Password Confirmation"
+            autoCapitalize={'none'}
             onChangeText={(value) => (newPasswordConfirmation = value)}
           />
           <TouchableOpacity style={styles.btn} onPress={resetPassword}>

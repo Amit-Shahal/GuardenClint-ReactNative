@@ -172,7 +172,8 @@ export default function Login({ navigation }) {
                   <TextInput
                     placeholder="Password"
                     leftIcon={{ type: "Entypo", name: "lock" }}
-                    secureTextEntry={true}
+                    // secureTextEntry={true}
+                    autoCapitalize={'none'}
                     onChangeText={(value) => (password = value)}
                     style={styles.textInput}
                   />

@@ -55,7 +55,7 @@ const getPlantsNames = (userPlants) => {
             getPlantsNames(area?.userPlants)
             
           }</Text>
-          {console.log(area)}
+          {/* {console.log(area)} */}
               {/* <TouchableOpacity
                 onPress={() => props.setCase(7)}
                 style={styles.touchableOpacity}
